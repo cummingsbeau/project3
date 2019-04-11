@@ -3,8 +3,8 @@ class Gallery extends Component {
 
     render() {
       return (
-        <div>{
-          this.props.Results.map( (item, index) => {
+        <div>
+        {this.props.Results.map( (item, index) => {
             let { Name } = item.songInfo;
             return (
               <a

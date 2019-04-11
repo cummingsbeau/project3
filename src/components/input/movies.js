@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 import { FormGroup, FormControl, InputGroup } from 'react-bootstrap';
-import Gallery from '../gallery/gallery';
+import Axios from "axios";
 
-class Input extends Component {
+class Movie extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -13,21 +13,22 @@ class Input extends Component {
         this.search = this.search.bind(this);
     }
     search = () => {
-        const API_URL = 'https://cors-anywhere.herokuapp.com/https://tastedive.com/api/similar?';
+        const API_URL = 'https://tastedive.com/api/similar?';
         const key = "333678-Relevant-QTGONVOF";
-        fetch(`${API_URL}type=music${key}${this.state.query}&limit=100&`,
-        {headers: new Headers ({"Content-Type":"application/json",origin:"http://localhost"})
+        Axios.get(`${API_URL}type=music:&k=${key}&q=${this.state.query}&limit=10&info=1`,
+            {
+                headers: new Headers({ "Content-Type": "application/json", origin: "http://localhost" })
 
-        })
+            })
             // .then(response => response.json())
-            .then(response => console.log(response))
-            
             .then(json => {
-                console.log(json);
-                let { Results } = json;
-                this.setState({ Results })
-            });
+                console.log(json.data.Similar.Results);
+                // let {Results} = json.data.Similar.Results;
+                this.setState({ Results: json.data.Similar.Results })
+            })
+            .then(console.log(this.state.Results))
     }
+
     handleChange = (event) => {
         this.setState({
             name: event.target.value
@@ -42,7 +43,7 @@ class Input extends Component {
         return (
             <div>
                 <FormGroup>
-                    <FormControl type="text" placeholder="Find Relevant Songs"
+                    <FormControl type="text" placeholder="Find Relevant Movies"
                         onChange={event => this.setState({ query: event.target.value })}
                         onKeyPress={event => {
                             if ('Enter' === event.key) {
@@ -51,12 +52,19 @@ class Input extends Component {
                         }} />
                     <InputGroup.Text onClick={this.search}>
                     </InputGroup.Text>
-                    <Gallery Results={this.state.Results} />
+                    {/* <Gallery Results={this.state.Results} /> */}
                 </FormGroup>
+                {this.state.Results.map(result => (
+                    <> <> <ul>
+                        <h3>{result.Name}</h3>
+                        <li><a href={result.wUrl} target="_blank">Check this out this movie on Wikipedia!</a></li>
+                        <li><a href={result.yUrl} target="_blank">Check this out this movie on Youtube!</a> </li>
+                    </ul></></>
+                ))
+                }
             </div>
         )
     };
 };
 
-
-export default Input;
+export default Movie;
