@@ -21,7 +21,7 @@ function Nav() {
                         <a class="nav-link" href="#" style={{color: 'white'}}>Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"style={{color: 'white'}}>Saved</a>
+                        <a class="nav-link" href=""style={{color: 'white'}}>Saved</a>
                     </li>
                 </ul>
             </nav>
