@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Nav from "../src/components/navbar/index"
-import Input from './components/input/input.js';
-import API from "../src/components/utils/API";
-import Movie from './components/input/movies';
-import Tv from "./components/input/tv";
+import Search from "../src/components/Search/Search"
+import Facebook from "./components/Facebook/fb";
+import Save from "./components/Saved/save"
+
 class App extends Component {
     state = {
       query: '',
@@ -11,12 +12,16 @@ class App extends Component {
   }
 render(){
   return (
-    <div>
-      <Nav />
-      <Input/>
-      <Movie/>
-      <Tv/>
+    <Router>
+      <div>
+        <Nav />
+        <Switch>
+          <Route exact path="/" component={Search} />
+          <Route exact path="/Facebook" component={Facebook} />
+          <Route exact path="/Save" component={Save} />
+         </Switch>
       </div>
+    </Router>
     );
   }
 }
