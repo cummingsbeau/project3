@@ -46,6 +46,7 @@ function Nav() {
                     >FaceBook</Link>    
                     </li>
                     <li class="nav-item">
+
                     <Link  
                     to="/Save"   
                     className={
@@ -55,6 +56,7 @@ function Nav() {
 
                     } 
                     >Saved Recommendations</Link>    
+
                     </li>
                   
                 </ul>
