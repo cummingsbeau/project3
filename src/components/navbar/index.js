@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import '../style/style.css';
 import 'bootstrap/dist/css/bootstrap.css';
+import { withStyles } from '@material-ui/core/styles';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
+import grey from '@material-ui/core/colors/grey';
+
 
 
 

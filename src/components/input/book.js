@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 import { FormGroup, FormControl, InputGroup } from 'react-bootstrap';
 import Axios from "axios";
+import API from "../utils/API";
 
 class Book extends Component {
     constructor(props) {
@@ -38,7 +39,17 @@ class Book extends Component {
         event.preventDefault();
         this.props.handleFormSubmit(this.state.term);
     };
-
+    handleFormSubmit = event => {
+        event.preventDefault();
+        if (this.state.Results.Name && this.state.Results.Type) {
+          API.saveSimilar({
+            name: this.state.Results.Name,
+            type: this.state.Results.Type,
+            date: Date.now
+          })
+            .catch(err => console.log(err));
+        }
+      };
     render() {
         return (
             <div>
@@ -52,13 +63,11 @@ class Book extends Component {
                         }} />
                     <InputGroup.Text onClick={this.search}>
                     </InputGroup.Text>
-                    {/* <Gallery Results={this.state.Results} /> */}
                 </FormGroup>
                 {this.state.Results.map(result => (
                     <> <> <ul>
                         <h3>{result.Name}</h3>
                         <li><a href={result.wUrl} target="_blank">Check this out this book on Wikipedia!</a></li>
-                        <li><a href={result.yUrl} target="_blank">Check this out this book on Youtube!</a> </li>
                     </ul></></>
                 ))
                 }
