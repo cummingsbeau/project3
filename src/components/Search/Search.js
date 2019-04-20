@@ -12,6 +12,7 @@ class Search extends Component {
       query: '',
       Results: [],
   }
+  
 render(){
   return (
     <div>         
