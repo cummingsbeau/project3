@@ -17,10 +17,7 @@ class Input extends Component {
         const API_URL = 'https://tastedive.com/api/similar?';
         const key = "333678-Relevant-QTGONVOF";
         Axios.get(`${API_URL}type=music:&k=${key}&q=${this.state.query}&limit=10&info=1`,
-            {
-                headers: new Headers({ "Content-Type": "application/json", origin: "http://localhost" })
-
-            })
+     )
             // .then(response => response.json())
             .then(json => {
                 console.log(json.data.Similar.Results); 
