@@ -16,7 +16,7 @@ class Book extends Component {
     }
     search = () => {
         const API_URL = 'https://tastedive.com/api/similar?';
-        const key = "333678-Relevant-QTGONVOF";
+        const key = "333678-Relevant-XODLQ5EI";
         Axios.get(`${API_URL}type=book:&k=${key}&q=${this.state.query}&limit=10&info=1`,
             {
                 // headers: {
@@ -28,7 +28,7 @@ class Book extends Component {
             // .then(response => response.json())
             .then(json => {
                 console.log(json.data.Similar.Results);
-                // let {Results} = json.data.Similar.Results;
+                let {Results} = json.data.Similar.Results;
                 this.setState({ Results: json.data.Similar.Results })
             })
             .then(console.log(this.state.Results))
@@ -72,8 +72,8 @@ class Book extends Component {
                 </FormGroup>
                 {this.state.Results.map(result => (
                     <> <> <ul>
-                        <h3>{result.Name}</h3>
-                        <li><a href={result.wUrl} target="_blank">Check this out this book on Wikipedia!</a></li>
+                        <h3 key={result.Name}>{result.Name}</h3>
+                        <li key={result.wUrl}><a href={result.wUrl} target="_blank">Check this out this book on Wikipedia!</a></li>
                         <li><Button variant="dark" button onClick={this.handleFormSubmit}button="true">Save</Button></li>
                     </ul></></>
                 ))

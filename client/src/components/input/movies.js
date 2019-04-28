@@ -14,7 +14,7 @@ class Movie extends Component {
     }
     search = () => {
         const API_URL = 'https://tastedive.com/api/similar?';
-        const key = "333678-Relevant-QTGONVOF";
+        const key = "333678-Relevant-XODLQ5EI";
         Axios.get(`${API_URL}type=movies:&k=${key}&q=${this.state.query}&limit=10&info=1`,
             {
                 headers: new Headers({ "Content-Type": "application/json", origin: "http://localhost" })
