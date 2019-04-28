@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import 'bootstrap/dist/css/bootstrap.css';
-import { FormGroup, FormControl, InputGroup } from 'react-bootstrap';
+import { FormGroup, FormControl, InputGroup, Button} from 'react-bootstrap';
 import Axios from "axios";
+import API from "../utils/API";
 // import Gallery from '../gallery/gallery';
 
 class Input extends Component {
@@ -39,6 +40,17 @@ class Input extends Component {
         event.preventDefault();
         this.props.handleFormSubmit(this.state.term);
     };
+    handleFormSubmit = event => {
+        event.preventDefault();
+        if (this.state.Results.Name && this.state.Results.Type) {
+            API.saveSimilar({
+                name: this.state.Results.Name,
+                type: this.state.Results.Type,
+                date: Date.now
+            })
+                .catch(err => console.log(err));
+        }
+    };
 
     render() {
         return (
@@ -61,6 +73,7 @@ class Input extends Component {
                         <h3>{result.Name}</h3>
                         <li><a href ={result.wUrl}target="_blank">Check this band out on Wikipedia!</a></li>
                         <li><a href ={result.yUrl}target="_blank">Check this band out on Youtube!</a> </li>
+                        <li><Button variant="dark" button onClick={this.handleFormSubmit}button="true">Save</Button></li>
                     </ul></></>
                     )) 
                 }
