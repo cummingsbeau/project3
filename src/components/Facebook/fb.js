@@ -3,6 +3,7 @@ import Nav from "../navbar/index";
 
 
 
+
 class Facebook extends Component {
     state = {
       query: '',
@@ -10,8 +11,7 @@ class Facebook extends Component {
   }
 render(){
   return (
-    <div>
-HELLO WORLD          
+    <div>      
       </div>
     );
   }

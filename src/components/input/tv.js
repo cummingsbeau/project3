@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import 'bootstrap/dist/css/bootstrap.css';
-import { FormGroup, FormControl, InputGroup } from 'react-bootstrap';
+import { FormGroup, FormControl, InputGroup ,  Row, Col  } from 'react-bootstrap';
 import Axios from "axios";
+import API from "../utils/API";
 class Tv extends Component {
     constructor(props) {
         super(props);
@@ -13,7 +14,7 @@ class Tv extends Component {
     }
     search = () => {
         const API_URL = 'https://tastedive.com/api/similar?';
-        const key = "333678-Relevant-QTGONVOF";
+        const key = "333678-Relevant-XODLQ5EI";
         Axios.get(`${API_URL}type=music:&k=${key}&q=${this.state.query}&limit=10&info=1`,
             {
                 headers: new Headers({ "Content-Type": "application/json", origin: "http://localhost" })
@@ -37,29 +38,46 @@ class Tv extends Component {
         event.preventDefault();
         this.props.handleFormSubmit(this.state.term);
     };
+    handleFormSubmit = event => {
+        event.preventDefault();
+        if (this.state.Results.Name && this.state.Results.Type) {
+            API.saveSimilar({
+                name: this.state.Results.Name,
+                type: this.state.Results.Type,
+                date: Date.now
+            })
+                .catch(err => console.log(err));
+        }
+    };
 
     render() {
         return (
             <div>
-                <FormGroup>
-                    <FormControl type="text" placeholder="Find Relevant TV Shows"
+                <Row>
+          <Col sm="12" md={{ size: 6, offset: 3 }}>
+          <FormGroup>
+                    <FormControl style={{width:'450px'}} type="text" placeholder="Find Relevant TV Shows"
                         onChange={event => this.setState({ query: event.target.value })}
                         onKeyPress={event => {
                             if ('Enter' === event.key) {
                                 this.search();
                             }
                         }} />
-                    <InputGroup.Text onClick={this.search}>
+                    <InputGroup.Text style={{ opacity: -1 }} onClick={this.search}>
                     </InputGroup.Text>
                 </FormGroup>
+          </Col>
+        </Row>
+                
                 {this.state.Results.map(result => (
                     <> <ul>
                         <h3>{result.Name}</h3>
                         <li><a href ={result.wUrl}target="_blank">Check this out this show on Wikipedia!</a></li>
                         <li><a href ={result.yUrl}target="_blank">Check this out this show on Youtube!</a> </li>
+        
                     </ul></>
                 ))
-                }
+                }]
             </div>
         )
     };
