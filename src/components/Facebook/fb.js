@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import html from "../Facebook/index.html"
 import Nav from "../navbar/index";
-var html = require('../Facebook/index.html');
 
 
 
@@ -12,8 +12,7 @@ class Facebook extends Component {
   }
 render(){
   return (
-    <div>
-HELLO WORLD          
+    <div>      
       </div>
     );
   }
