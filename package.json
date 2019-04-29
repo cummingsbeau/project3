@@ -17,7 +17,8 @@
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
-    "react-strap": "0.0.1"
+    "react-strap": "0.0.1",
+    "typeface-bungee-shade": "0.0.71"
   },
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",

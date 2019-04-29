@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import 'bootstrap/dist/css/bootstrap.css';
-import { FormGroup, FormControl, InputGroup, Button } from 'react-bootstrap';
+import { FormGroup, FormControl, InputGroup , Button ,  Row, Col} from 'react-bootstrap';
 import Axios from "axios";
+import '../style/style.css';
 import API from "../utils/API";
+
 
 class Book extends Component {
     constructor(props) {
@@ -58,19 +60,28 @@ class Book extends Component {
     render() {
         return (
             <div>
-                
-                <FormGroup>
-                    
-                    <FormControl type="text" placeholder="Find Relevant Books"
-                        onChange={event => this.setState({ query: event.target.value })}
-                        onKeyPress={event => {
-                            if ('Enter' === event.key) {
-                                this.search();
-                            }
-                        }} />
-                    <InputGroup.Text onClick={this.search}>
-                    </InputGroup.Text>
-                </FormGroup>
+                 <Row>
+          <Col sm="12" md={{ size: 6, offset: 3 }}>
+          <FormGroup  >
+            
+            <FormControl style={{ justifyContent: 'center' , width:'450px'}}  type="text" placeholder="Find Relevant Books"      
+                onChange={event => this.setState({ query: event.target.value })}
+           onKeyPress={event => {
+                    if ('Enter' === event.key) {
+                        this.search();
+                        
+                    }
+                }} />
+            <InputGroup.Text  style={{ opacity: -1 }} onClick={this.search}>
+  
+            </InputGroup.Text>
+
+        </FormGroup >
+          
+          </Col>
+        </Row>
+               
+  
                 {this.state.Results.map(result => (
                     <> <> <ul>
                         <h3 key={result.Name}>{result.Name}</h3>

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import 'bootstrap/dist/css/bootstrap.css';
-import { FormGroup, FormControl, InputGroup, Button } from 'react-bootstrap';
+import { FormGroup, FormControl, InputGroup ,  Row, Col  } from 'react-bootstrap';
 import Axios from "axios";
 import API from "../utils/API";
 class Tv extends Component {
@@ -53,26 +53,32 @@ class Tv extends Component {
     render() {
         return (
             <div>
-                <FormGroup>
-                    <FormControl type="text" placeholder="Find Relevant TV Shows"
+                <Row>
+          <Col sm="12" md={{ size: 6, offset: 3 }}>
+          <FormGroup>
+                    <FormControl style={{width:'450px'}} type="text" placeholder="Find Relevant TV Shows"
                         onChange={event => this.setState({ query: event.target.value })}
                         onKeyPress={event => {
                             if ('Enter' === event.key) {
                                 this.search();
                             }
                         }} />
-                    <InputGroup.Text onClick={this.search}>
+                    <InputGroup.Text style={{ opacity: -1 }} onClick={this.search}>
                     </InputGroup.Text>
                 </FormGroup>
+          </Col>
+        </Row>
+                
                 {this.state.Results.map(result => (
                     <> <ul>
                         <h3>{result.Name}</h3>
                         <li><a href ={result.wUrl}target="_blank">Check this out this show on Wikipedia!</a></li>
                         <li><a href ={result.yUrl}target="_blank">Check this out this show on Youtube!</a> </li>
                         <li><Button variant="dark" button onClick={this.handleFormSubmit}button="true">Save</Button></li>
+        
                     </ul></>
                 ))
-                }
+                }]
             </div>
         )
     };
