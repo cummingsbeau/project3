@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import '../style/style.css';
 //import 'mdbreact/dist/css/mdb.css';
 //import { MDBIcon } from "mdbreact";
-import "typeface-roboto";
+//import "typeface-roboto";
 import 'bootstrap/dist/css/bootstrap.css';
 
 
