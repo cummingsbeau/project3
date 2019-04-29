@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import 'bootstrap/dist/css/bootstrap.css';
-import { FormGroup, FormControl, InputGroup , Row, Col  } from 'react-bootstrap';
+import { FormGroup, FormControl, InputGroup , Row, Col, Button  } from 'react-bootstrap';
 import Axios from "axios";
 import API from "../utils/API";
 // import Gallery from '../gallery/gallery';
@@ -56,7 +56,7 @@ class Input extends Component {
         return (
             <div>
                  <Row>
-          <Col sm="12" md={{ size: 6, offset: 3 }}>]
+          <Col sm="12" md={{ size: 6, offset: 3 }}>
           <FormGroup>
                     <FormControl style={{width:'450px'}} type="text" placeholder="Find Relevant Bands"
                         onChange={event => this.setState({ query: event.target.value })}
@@ -67,7 +67,6 @@ class Input extends Component {
                         }} />
                     <InputGroup.Text style={{ opacity: -1 }} onClick={this.search}>
                     </InputGroup.Text>
-                    {/* <Gallery Results={this.state.Results} /> */}
                 </FormGroup>
           
           </Col>

@@ -62,14 +62,12 @@ class Book extends Component {
             <div>
                  <Row>
           <Col sm="12" md={{ size: 6, offset: 3 }}>
-          <FormGroup  >
-            
+          <FormGroup>
             <FormControl style={{ justifyContent: 'center' , width:'450px'}}  type="text" placeholder="Find Relevant Books"      
-                onChange={event => this.setState({ query: event.target.value })}
+                onChange={event => this.setState({query: event.target.value })}
            onKeyPress={event => {
                     if ('Enter' === event.key) {
-                        this.search();
-                        
+                        this.search();  
                     }
                 }} />
             <InputGroup.Text  style={{ opacity: -1 }} onClick={this.search}>
