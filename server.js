@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:3000");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://<heroku_vc3cwkxj>:<root123>@ds155263.mlab.com:55263/heroku_vc3cwkxj");
 
 // app.use(function(req, res, next) {
 //     res.setHeader("Access-Control-Allow-Origin", "*");
