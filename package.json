@@ -13,11 +13,13 @@
     "material-ui": "^0.20.2",
     "mongoose": "^5.5.3",
     "react": "^16.8.6",
-    "react-bootstrap": "^1.0.0-beta.6",
+    "react-bootstrap": "^1.0.0-beta.8",
     "react-dom": "^16.8.6",
+    "react-google-font-loader": "^1.0.5",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
-    "react-strap": "0.0.1"
+    "react-strap": "0.0.1",
+    "typeface-bungee-shade": "0.0.71"
   },
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",

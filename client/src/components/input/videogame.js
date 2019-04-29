@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import 'bootstrap/dist/css/bootstrap.css';
-import { FormGroup, FormControl, InputGroup, Button } from 'react-bootstrap';
+import { FormGroup, FormControl, InputGroup ,  Row, Col } from 'react-bootstrap';
 import Axios from "axios";
 import API from "../utils/API";
-class Game extends Component {
+
+class Book extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -15,7 +16,7 @@ class Game extends Component {
     search = () => {
         const API_URL = 'https://tastedive.com/api/similar?';
         const key = "333678-Relevant-XODLQ5EI";
-        Axios.get(`${API_URL}type=game:&k=${key}&q=${this.state.query}&limit=10&info=1`,
+        Axios.get(`${API_URL}type=book:&k=${key}&q=${this.state.query}&limit=10&info=1`,
             {
                 headers: new Headers({ "Content-Type": "application/json", origin: "http://localhost" })
 
@@ -41,30 +42,36 @@ class Game extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
         if (this.state.Results.Name && this.state.Results.Type) {
-            API.saveSimilar({
-                name: this.state.Results.Name,
-                type: this.state.Results.Type,
-                date: Date.now
-            })
-                .catch(err => console.log(err));
+          API.saveSimilar({
+            name: this.state.Results.Name,
+            type: this.state.Results.Type,
+            date: Date.now
+          })
+            .catch(err => console.log(err));
         }
-    };
-
+      };
     render() {
         return (
             <div>
-                <FormGroup>
-                    <FormControl type="text" placeholder="Find Relevant Video Games"
+
+<Row>
+          <Col sm="12" md={{ size: 6, offset: 3 }}>
+          
+          <FormGroup>
+                    <FormControl style={{width:'450px'}} type="text" placeholder="Find Relevant Video Games"
                         onChange={event => this.setState({ query: event.target.value })}
                         onKeyPress={event => {
                             if ('Enter' === event.key) {
                                 this.search();
                             }
                         }} />
-                    <InputGroup.Text onClick={this.search}>
+                    <InputGroup.Text style={{ opacity: -1 }} onClick={this.search}>
                     </InputGroup.Text>
-                    {/* <Gallery Results={this.state.Results} /> */}
                 </FormGroup>
+          </Col>
+        </Row>
+
+               
                 {this.state.Results.map(result => (
                     <> <> <ul>
                         <h3>{result.Name}</h3>
@@ -79,4 +86,4 @@ class Game extends Component {
     };
 };
 
-export default Game;
+export default Book;
