@@ -21,8 +21,6 @@ render(){
       <Tv/> 
       <Book/>
       <Game/>
-
-          
       </div>
     );
   }

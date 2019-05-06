@@ -12,8 +12,6 @@ class Book extends Component {
         this.state = {
             query: '',
             Results: [],
-            button:false,
-            id:0
         };
         this.search = this.search.bind(this);
     }
